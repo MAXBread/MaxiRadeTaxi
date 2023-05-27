@@ -1,2 +1,3 @@
 .idea/
 __init__.py
+/maxiradetaxi/db.sqlite3
