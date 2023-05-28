@@ -1,0 +1,20 @@
+{% extends 'login/layout.html' %}
+
+{% block title %}Order{% endblock %}
+
+{% block body %}
+    <h1>Order</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.phone }}
+        {{ form.address_from }}
+        {{ form.address_to }}
+        {{ form.cost }}
+        {{ form.time }}
+        {{ form.status }}
+        {{ form.comment }}
+
+        <button class="btn btn-primary me-1" type="submit">Зберегти</button>
+    </form>
+
+{% endblock %}

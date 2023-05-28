@@ -25,12 +25,13 @@ SECRET_KEY = 'django-insecure-_m6p2!598^@@q=uq6fo*jruu810s(%-ws7#i%%m!xh++87tlbk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.103']
+ALLOWED_HOSTS = ['localhost', '192.168.0.103']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django_tables2',
     'oper',
     'login',
     'django.contrib.admin',
@@ -136,3 +137,9 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap5-responsive.html"
+
+DJANGO_TABLES2_TABLE_ATTRS = {
+    'class': 'table-xl table-bordered',
+}
