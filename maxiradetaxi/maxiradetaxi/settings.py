@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['192.168.0.103']
 # Application definition
 
 INSTALLED_APPS = [
+    'oper',
     'login',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -104,9 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uk'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 
@@ -114,6 +115,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+LANGUAGES = [
+    ('uk', 'Українська'),
+    ('es', 'Spanish'),
+    ('de', 'German'),
+    ('en', 'English'),
+    ('pt-br', 'Brazilian'),
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
