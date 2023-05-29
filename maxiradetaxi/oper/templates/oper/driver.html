@@ -1,0 +1,36 @@
+{% extends 'login/layout.html' %}
+
+{% block title %}newcar{% endblock %}
+
+{% block body %}
+<h1 class="text-center">Додання нового водія</h1>
+<section class="h-100">
+  <div class="container py-3 w-50">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.car_number }}
+        {{ form.car_model }}
+        {{ form.car_color }}
+        {{ form.position }}
+        {{ form.status }}
+        <div class="container row">
+            <div class="container text-left p-2 col">
+                <p>Крісло</p>
+                <p>Багаж</p>
+                <p>Курець</p>
+            </div>
+            <div class="container text-left p-2 col">
+                <p>{{ form.child_seat }}</p>
+                <p>{{ form.trunk }}</p>
+                <p>{{ form.smoking }}</p>
+            </div>
+            <div class="container col-10">
+            </div>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-primary me-1 " type="submit">Зберегти</button>
+        </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

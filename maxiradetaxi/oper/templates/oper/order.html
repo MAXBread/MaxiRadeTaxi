@@ -3,7 +3,9 @@
 {% block title %}Order{% endblock %}
 
 {% block body %}
-    <h1>Order</h1>
+<h1 class="text-center">Нове замовелня</h1>
+<section class="h-100">
+  <div class="container text-center  py-3 h-100">
     <form method="post">
         {% csrf_token %}
         {{ form.phone }}
@@ -13,9 +15,13 @@
         {{ form.time }}
         {{ form.status }}
         {{ form.comment }}
-        {{ form.driver }}
+        <div>
+            <p>Автівка {{ form.driver }}</p>
+
+        </div>
 
         <button class="btn btn-primary me-1" type="submit">Зберегти</button>
     </form>
-
+  </div>
+</section>
 {% endblock %}

@@ -15,6 +15,9 @@ class Drivers(models.Model):
     def __str__(self):
         return f'{self.car_number} {self.status}'
 
+    def get_absolute_url(self):
+        return f'/operator/'
+
     class Meta:
         verbose_name = 'Водій'
         verbose_name_plural = 'Водії'
@@ -38,6 +41,9 @@ class Orders(models.Model):
 
     def __str__(self):
         return f'{self.phone} {self.status}'
+
+    def get_absolute_url(self):
+        return f'/operator/'
 
     class Meta:
         verbose_name = 'Замовлення'

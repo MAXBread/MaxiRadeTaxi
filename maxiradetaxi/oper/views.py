@@ -1,10 +1,9 @@
-from django.shortcuts import render
-from .models import Drivers, Orders
-from .forms import OrderForm
-
 import django_tables2 as tables
+from django.shortcuts import render, redirect
+from django.views.generic import UpdateView
 
-from django.http import HttpResponse
+from .forms import OrderForm, DriverForm
+from .models import Drivers, Orders
 
 
 class DriversTable(tables.Table):
@@ -21,17 +20,52 @@ def operator(request):
     drivers = Drivers.objects.order_by('status')
     drivers_table = DriversTable(drivers)
     orders_table = OrdersTable(Orders.objects.order_by('status'))
-    #fields_dict = {field.name: field.verbose_name for field in Drivers._meta.get_fields()}
-
-    #return HttpResponse("<h4>Hello world</h4>")
     return render(request, 'oper/operator.html', {'drivers_table': drivers_table, 'orders_table': orders_table})
 
 
 def order(request):
-    form = OrderForm()
+    error = ''
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('operator')
+        else:
+            error = 'form error'
 
+    form = OrderForm()
     data = {
-        'form': form
+        'form': form,
+        'error': error
     }
     return render(request, 'oper/order.html', data)
 
+
+def new_driver(request):
+    error = ''
+    if request.method == 'POST':
+        form = DriverForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('operator')
+        else:
+            error = 'form error'
+
+    form = DriverForm()
+    data = {
+        'form': form,
+        'error': error
+    }
+    return render(request, 'oper/driver.html', data)
+
+
+class OrderUpdateView(UpdateView):
+    model = Orders
+    template_name = 'oper/order.html'
+    form_class = OrderForm
+
+
+class DriverUpdateView(UpdateView):
+    model = Drivers
+    template_name = 'oper/driver.html'
+    form_class = DriverForm

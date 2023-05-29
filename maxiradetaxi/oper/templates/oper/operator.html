@@ -5,11 +5,11 @@
 
 {% block body %}
 
-    <h1>operator interface </h1>
-    <div class="">
+<h1>operator interface </h1>
+<div class="">
   <div class="row">
     <div class="col-4 overflow-auto">
-
+        <button onclick="location.href='{% url 'driver' %}'" type="button" class="btn btn-primary">Новий водій</button>
         {% render_table drivers_table %}
 
     </div>

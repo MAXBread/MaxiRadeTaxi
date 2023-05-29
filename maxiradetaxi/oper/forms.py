@@ -1,5 +1,5 @@
 from .models import Orders, Drivers
-from django.forms import ModelForm, TextInput, DateTimeInput, ModelChoiceField, NumberInput
+from django.forms import ModelForm, TextInput, DateTimeInput, ModelChoiceField, NumberInput, CheckboxInput
 
 
 class OrderForm(ModelForm):
@@ -44,4 +44,43 @@ class OrderForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Коментар'
             })
+        }
+
+
+class DriverForm(ModelForm):
+    class Meta:
+        model = Drivers
+        fields = ['car_number', 'car_model', 'car_color', 'position', 'status', 'child_seat', 'trunk', 'smoking']
+
+        widgets = {
+            'car_number': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Держномер'
+            }),
+
+            'car_model': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Марка'
+            }),
+
+            'car_color': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Колір'
+            }),
+
+            'position': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Стоянка'
+            }),
+
+            'status': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Статус'
+            }),
+
+            'child_seat': CheckboxInput(attrs={}),
+
+            'trunk': CheckboxInput(attrs={}),
+
+            'smoking': CheckboxInput(attrs={})
         }
