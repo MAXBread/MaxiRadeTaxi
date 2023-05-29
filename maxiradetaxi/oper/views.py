@@ -2,16 +2,22 @@ import django_tables2 as tables
 from django.shortcuts import render, redirect
 from django.views.generic import UpdateView
 
+
 from .forms import OrderForm, DriverForm
 from .models import Drivers, Orders
+from django_tables2.utils import A  # alias for Accessor
 
 
 class DriversTable(tables.Table):
+    car_number = tables.LinkColumn("driver-update", args=[A("pk")])
+
     class Meta:
         model = Drivers
 
 
 class OrdersTable(tables.Table):
+    phone = tables.LinkColumn("order-update", args=[A("pk")])
+
     class Meta:
         model = Orders
 

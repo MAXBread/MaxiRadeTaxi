@@ -6,15 +6,15 @@
 {% block body %}
 
 <h1>operator interface </h1>
-<div class="">
+<div class="container">
   <div class="row">
-    <div class="col-4 overflow-auto">
+    <div class="col-4 p-2 overflow-auto">
         <button onclick="location.href='{% url 'driver' %}'" type="button" class="btn btn-primary">Новий водій</button>
         {% render_table drivers_table %}
 
     </div>
 
-    <div class="col-8 overflow-auto">
+    <div class="col-8 p-2 overflow-auto">
         <button onclick="location.href='{% url 'order' %}'" type="button" class="btn btn-primary">Замовлення</button>
 
         {% render_table orders_table %}
