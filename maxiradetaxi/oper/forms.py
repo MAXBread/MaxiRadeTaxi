@@ -7,6 +7,8 @@ class OrderForm(ModelForm):
         model = Orders
         fields = ['phone', 'address_from', 'address_to', 'cost', 'time', 'status', 'comment', 'driver']
 
+        driver = ModelChoiceField(queryset=Drivers.objects.all())
+
         widgets = {
             'phone': NumberInput(attrs={
                 'class': 'form-control',
@@ -41,7 +43,5 @@ class OrderForm(ModelForm):
             'comment': TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Коментар'
-            }),
-
-            #'driver': ModelChoiceField(queryset=Drivers.objects.order_by('status'))
+            })
         }
