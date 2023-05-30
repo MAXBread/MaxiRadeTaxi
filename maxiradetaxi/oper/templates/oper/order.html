@@ -1,9 +1,9 @@
 {% extends 'login/layout.html' %}
 
-{% block title %}Нове замовелня{% endblock %}
+{% block title %}Замовелня{% endblock %}
 
 {% block body %}
-<h1 class="text-center">Нове замовелня</h1>
+<h1 class="text-center">Замовелня</h1>
 <section class="h-100">
   <div class="container text-center  py-3 h-100">
     <form method="post">
@@ -13,10 +13,11 @@
         {{ form.address_to }}
         {{ form.cost }}
         {{ form.time }}
-        {{ form.status }}
+
         {{ form.comment }}
         <div>
             <p>Автівка {{ form.driver }}</p>
+            <p>Статус замовленя{{ form.status }}</p>
         </div>
         <button class="btn btn-primary me-1" type="submit">Зберегти</button>
         <button onclick="location.href='{% url 'operator' %}'" type="button" class="btn btn-primary">Скасувати</button>

@@ -1,5 +1,5 @@
 from .models import Orders, Drivers
-from django.forms import ModelForm, TextInput, DateTimeInput, ModelChoiceField, NumberInput, CheckboxInput
+from django.forms import ModelForm, TextInput, DateTimeInput, ModelChoiceField, NumberInput, CheckboxInput, ChoiceField
 
 
 class OrderForm(ModelForm):
@@ -8,6 +8,8 @@ class OrderForm(ModelForm):
         fields = ['phone', 'address_from', 'address_to', 'cost', 'time', 'status', 'comment', 'driver']
 
         driver = ModelChoiceField(queryset=Drivers.objects.all())
+
+        status = ChoiceField()
 
         widgets = {
             'phone': NumberInput(attrs={
@@ -35,10 +37,10 @@ class OrderForm(ModelForm):
                 'placeholder': 'Час'
             }),
 
-            'status': TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Статус'
-            }),
+            # 'status': TextInput(attrs={
+            #     'class': 'form-control',
+            #     'placeholder': 'Статус'
+            # }),
 
             'comment': TextInput(attrs={
                 'class': 'form-control',
@@ -51,6 +53,10 @@ class DriverForm(ModelForm):
     class Meta:
         model = Drivers
         fields = ['car_number', 'car_model', 'car_color', 'position', 'status', 'child_seat', 'trunk', 'smoking']
+
+       # driver = ModelChoiceField(queryset=Drivers.objects.all())
+
+        status = ChoiceField()
 
         widgets = {
             'car_number': TextInput(attrs={
@@ -73,10 +79,10 @@ class DriverForm(ModelForm):
                 'placeholder': 'Стоянка'
             }),
 
-            'status': TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Статус'
-            }),
+            # 'status': ChoiceField(attrs={
+            #     'class': 'form-control',
+            #     'placeholder': 'Статус'
+            # }),
 
             'child_seat': CheckboxInput(attrs={}),
 
