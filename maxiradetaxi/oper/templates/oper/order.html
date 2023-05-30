@@ -5,7 +5,7 @@
 {% block body %}
 <h1 class="text-center">Замовелня</h1>
 <section class="h-100">
-  <div class="container text-center  py-3 h-100">
+  <div class="container py-3 w-50">
     <form method="post">
         {% csrf_token %}
         {{ form.phone }}
@@ -13,14 +13,23 @@
         {{ form.address_to }}
         {{ form.cost }}
         {{ form.time }}
-
         {{ form.comment }}
-        <div>
-            <p>Автівка {{ form.driver }}</p>
-            <p>Статус замовленя{{ form.status }}</p>
+        <div class="container row ">
+            <div class="container p-2 col">
+                <p>Автівка</p>
+                <p>Статус замовленя</p>
+            </div>
+            <div class="container p-2 col">
+                <p>{{ form.driver }}</p>
+                <p>{{ form.status }}</p>
+            </div>
+            <div class="container  col-8">
+            </div>
         </div>
-        <button class="btn btn-primary me-1" type="submit">Зберегти</button>
-        <button onclick="location.href='{% url 'operator' %}'" type="button" class="btn btn-primary">Скасувати</button>
+        <div class="text-center">
+            <button class="btn btn-primary me-1" type="submit">Зберегти</button>
+            <button onclick="location.href='{% url 'operator' %}'" type="button" class="btn btn-primary">Скасувати</button>
+        </div>
     </form>
 
   </div>
