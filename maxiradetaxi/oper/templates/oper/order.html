@@ -17,11 +17,11 @@
         {{ form.comment }}
         <div>
             <p>Автівка {{ form.driver }}</p>
-
         </div>
-
         <button class="btn btn-primary me-1" type="submit">Зберегти</button>
+        <button onclick="location.href='{% url 'operator' %}'" type="button" class="btn btn-primary">Скасувати</button>
     </form>
+
   </div>
 </section>
 {% endblock %}
