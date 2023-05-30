@@ -1,11 +1,14 @@
 {% extends 'login/layout.html' %}
 {% load render_table from django_tables2 %}
 
-{% block title %}Operator interface{% endblock %}
+{% block title %}Операторська панель{% endblock %}
 
 {% block body %}
 
-<h1>operator interface </h1>
+<h1 class="text-center" >
+    Операторська панель
+    <button onclick="location.href='{% url 'login' %}'" type="button" class="btn btn-primary text-center">Вийти</button>
+</h1>
 <div class="container">
   <div class="row">
     <div class="col-4 p-2 overflow-auto">
