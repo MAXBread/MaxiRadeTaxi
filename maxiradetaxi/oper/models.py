@@ -4,9 +4,9 @@ from django.utils.timezone import now
 
 class Drivers(models.Model):
     class DriverStatus (models.TextChoices):
-        NP = 'NP', 'Не Працює'
-        CH = 'CH', 'Черга'
-        OR = 'OR', 'Замовлення'
+        NP = 'Не Працює', 'Не Працює'
+        CH = 'Черга', 'Черга'
+        OR = 'Замовлення', 'Замовлення'
 
     car_number = models.CharField('Держномер', max_length=10)
     car_model = models.CharField('Марка', max_length=20)
@@ -30,13 +30,13 @@ class Drivers(models.Model):
 
 class Orders(models.Model):
     class OrderStatus (models.TextChoices):
-        PN = 'PN', 'Прийнято'
-        NU = 'NU', 'Немає'
-        VD = 'VD', 'В дорозі'
-        CK = 'CK', 'Чекає'
-        VK = 'VK', 'Виконнаня'
-        VN = 'VN', 'Виконано'
-        VU = 'VU', 'Відмінено'
+        PN = 'Прийнято', 'Прийнято'
+        NU = 'Немає', 'Немає'
+        VD = 'В дорозі', 'В дорозі'
+        CK = 'Чекає', 'Чекає'
+        VK = 'Виконнаня', 'Виконнаня'
+        VN = 'Виконано', 'Виконано'
+        VU = 'Відмінено', 'Відмінено'
 
     phone = models.DecimalField('Телефон', max_digits=9, decimal_places=0)
     address_from = models.CharField('Звідки', max_length=20)
