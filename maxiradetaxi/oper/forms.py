@@ -34,13 +34,8 @@ class OrderForm(ModelForm):
 
             'time': DateTimeInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Час'
+                'placeholder': 'Час',
             }),
-
-            # 'status': TextInput(attrs={
-            #     'class': 'form-control',
-            #     'placeholder': 'Статус'
-            # }),
 
             'comment': TextInput(attrs={
                 'class': 'form-control',
@@ -76,11 +71,6 @@ class DriverForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Стоянка'
             }),
-
-            # 'status': ChoiceField(attrs={
-            #     'class': 'form-control',
-            #     'placeholder': 'Статус'
-            # }),
 
             'child_seat': CheckboxInput(attrs={}),
 
