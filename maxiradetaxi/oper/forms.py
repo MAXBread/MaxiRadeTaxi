@@ -54,8 +54,6 @@ class DriverForm(ModelForm):
         model = Drivers
         fields = ['car_number', 'car_model', 'car_color', 'position', 'status', 'child_seat', 'trunk', 'smoking']
 
-       # driver = ModelChoiceField(queryset=Drivers.objects.all())
-
         status = ChoiceField()
 
         widgets = {

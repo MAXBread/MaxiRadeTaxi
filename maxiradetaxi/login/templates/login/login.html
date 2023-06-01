@@ -12,16 +12,10 @@
           <div class="card-body p-5 text-center">
             <form method="post">
               {% csrf_token %}
-              <h3 class="mb-5">Sign in</h3>
-
+              <h3 class="mb-5">Авторизація</h3>
               <div class="form-outline mb-4">
-                <input type="text" placeholder="Login" id="username" class="form-control form-control-lg" />
+                {{ form.as_p }}
               </div>
-
-              <div class="form-outline mb-4">
-                  <input type="password" placeholder="Password" id="typePasswordX-2" class="form-control form-control-lg" />
-              </div>
-
               <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
             </form>
           </div>

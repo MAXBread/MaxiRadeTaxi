@@ -5,9 +5,10 @@
 
 {% block body %}
 
-<h1 class="text-center" >
+<h1 class="text-center">
     Операторська панель
-    <button onclick="location.href='{% url 'login' %}'" type="button" class="btn btn-primary text-center">Вийти</button>
+    {{user.username}}
+    <button onclick="location.href='{% url 'logout' %}'" type="button" class="btn btn-primary text-center">Вийти</button>
 </h1>
 <div class="container">
   <div class="row">
@@ -17,9 +18,8 @@
 
     </div>
 
-    <div class="col-7 p-2 overflow-auto">
+    <div class="col-7 p-2 overflow-auto text-rights">
         <button onclick="location.href='{% url 'order' %}'" type="button" class="btn btn-primary">Замовлення</button>
-
         {% render_table orders_table %}
     </div>
   </div>

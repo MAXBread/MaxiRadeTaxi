@@ -1,7 +1,7 @@
 import django_tables2 as tables
 from django.shortcuts import render, redirect
 from django.views.generic import UpdateView
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import OrderForm, DriverForm
 from .models import Drivers, Orders
@@ -23,13 +23,18 @@ class OrdersTable(tables.Table):
 
 
 def operator(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
     drivers = Drivers.objects.order_by('status')
     drivers_table = DriversTable(drivers)
     orders_table = OrdersTable(Orders.objects.order_by('status'))
+
     return render(request, 'oper/operator.html', {'drivers_table': drivers_table, 'orders_table': orders_table})
 
 
 def order(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
     error = ''
     if request.method == 'POST':
         form = OrderForm(request.POST)
@@ -48,6 +53,8 @@ def order(request):
 
 
 def new_driver(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
     error = ''
     if request.method == 'POST':
         form = DriverForm(request.POST)
@@ -65,13 +72,17 @@ def new_driver(request):
     return render(request, 'oper/driver.html', data)
 
 
-class OrderUpdateView(UpdateView):
+class OrderUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = '/'
+    redirect_field_name = None
     model = Orders
     template_name = 'oper/order.html'
     form_class = OrderForm
 
 
-class DriverUpdateView(UpdateView):
+class DriverUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = '/'
+    redirect_field_name = None
     model = Drivers
     template_name = 'oper/driver.html'
     form_class = DriverForm

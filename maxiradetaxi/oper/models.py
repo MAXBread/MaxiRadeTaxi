@@ -20,7 +20,8 @@ class Drivers(models.Model):
     def __str__(self):
         return f'{self.car_number} {self.status}'
 
-    def get_absolute_url(self):
+    @staticmethod
+    def get_absolute_url():
         return f'/operator/'
 
     class Meta:
@@ -48,7 +49,6 @@ class Orders(models.Model):
     driver = models.ForeignKey(
         Drivers,
         on_delete=models.DO_NOTHING,
-        #primary_key=True,
         blank=True,
         null=True
     )
@@ -56,11 +56,10 @@ class Orders(models.Model):
     def __str__(self):
         return f'{self.phone} {self.status}'
 
-    def get_absolute_url(self):
+    @staticmethod
+    def get_absolute_url():
         return f'/operator/'
 
     class Meta:
         verbose_name = 'Замовлення'
         verbose_name_plural = 'Замовлення'
-
-
