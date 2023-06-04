@@ -28,13 +28,13 @@ def operator(request):
     drivers_table = DriversTable(Drivers.objects.all(), prefix='driver-')
     orders_table = OrdersTable(Orders.objects.all(), prefix='order-')
 
-    if 'driver-sort' in request.GET.keys():
-        drivers_table.order_by = request.GET['driver-sort']
+    if request.GET.get('driver-sort'):
+        drivers_table.order_by = request.GET.get('driver-sort')
     else:
         drivers_table.order_by = 'status'
 
-    if 'order-sort' in request.GET.keys():
-        orders_table.order_by = request.GET['order-sort']
+    if request.GET.get('order-sort'):
+        orders_table.order_by = request.GET.get('order-sort')
     else:
         orders_table.order_by = 'status'
 
