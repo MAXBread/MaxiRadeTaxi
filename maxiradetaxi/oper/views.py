@@ -25,9 +25,18 @@ class OrdersTable(tables.Table):
 def operator(request):
     if not request.user.is_authenticated:
         return redirect('login')
-    drivers = Drivers.objects.order_by('status')
-    drivers_table = DriversTable(drivers)
-    orders_table = OrdersTable(Orders.objects.order_by('status'))
+    drivers_table = DriversTable(Drivers.objects.all(), prefix='driver-')
+    orders_table = OrdersTable(Orders.objects.all(), prefix='order-')
+
+    if 'driver-sort' in request.GET.keys():
+        drivers_table.order_by = request.GET['driver-sort']
+    else:
+        drivers_table.order_by = 'status'
+
+    if 'order-sort' in request.GET.keys():
+        orders_table.order_by = request.GET['order-sort']
+    else:
+        orders_table.order_by = 'status'
 
     return render(request, 'oper/operator.html', {'drivers_table': drivers_table, 'orders_table': orders_table})
 

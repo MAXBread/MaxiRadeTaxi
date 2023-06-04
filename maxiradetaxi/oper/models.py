@@ -8,6 +8,7 @@ class Drivers(models.Model):
         CH = 'Черга', 'Черга'
         OR = 'Замовлення', 'Замовлення'
 
+    objects = models.Manager()
     car_number = models.CharField('Держномер', max_length=10)
     car_model = models.CharField('Марка', max_length=20)
     car_color = models.CharField('Колір', max_length=20)
@@ -39,6 +40,7 @@ class Orders(models.Model):
         VN = 'Виконано', 'Виконано'
         VU = 'Відмінено', 'Відмінено'
 
+    objects = models.Manager()
     phone = models.DecimalField('Телефон', max_digits=9, decimal_places=0)
     address_from = models.CharField('Звідки', max_length=20)
     address_to = models.CharField('Куди', max_length=20)
